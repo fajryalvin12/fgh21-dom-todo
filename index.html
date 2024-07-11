@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>To Do List</title>
+    <link rel="stylesheet" href="./asset/css/style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="container-center">
+        <div class="header">My day</div>
+        <div class="todo-list">
+          <div class="list-wrapper" id="pink-section">
+            <legend class="pink">TO DO</legend>
+            <div>
+              <button class="plus" id="add-pink">
+                <img src="./asset/icons/plus.png" alt="" />
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="todo-list">
+          <div class="list-wrapper" id="green-section">
+            <legend class="green">PLACE TO GO</legend>
+            <div>
+              <button class="plus">
+                <img src="./asset/icons/plus.png" alt="" />
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="todo-list">
+          <div class="list-wrapper" id="orange-section">
+            <legend class="orange">PEOPLE TO SPEAK</legend>
+            <div>
+              <button class="plus">
+                <img src="./asset/icons/plus.png" alt="" />
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="popup hide">
+      <div class="input-data">
+        <form id="input-data">
+          <label for="text-data" class="header-popup"
+            >Text the new to-do-list</label
+          >
+          <input type="text" id="text-data" name="list" />
+          <button class="submit-data" type="submit">Submit</button>
+        </form>
+      </div>
+    </div>
+    <script src="./asset/js/script.js"></script>
+  </body>
+</html>
