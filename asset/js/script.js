@@ -1,36 +1,67 @@
+const popup = document.getElementsByClassName("popup").item(0);
+
 const pinkSection = document.getElementById("pink-section");
-const greenSection = document.getElementById("green-section");
-const orangeSection = document.getElementById("orange-section");
+let dataPink = [];
+// kalau data di local storage tidak kosong, maka dataPink = local storage
+const submitDataPink = window.localStorage.getItem("data1");
+if (submitDataPink !== null) {
+  dataPink = JSON.parse(submitDataPink);
+}
+const btnPink = document.getElementById("btn-pink");
+const inputDataPink = document.getElementById("data-pink");
+function processPink() {
+  pinkSection.innerHTML = "";
+  dataPink.forEach((item, index) => {
+    const listSection = document.createElement("div");
+    const inputBox = document.createElement("input");
+    inputBox.type = "checkbox";
+    inputBox.id = "pink" + index + 1;
+    if (item.checked) {
+      inputBox.checked = true;
+    }
+    const labelSection = document.createElement("label");
+    labelSection.textContent = item.text;
+    labelSection.htmlFor = inputBox.id;
 
-dataPink.forEach((item, index) => {
-  const listSection = document.createElement("div");
-  const inputBox = document.createElement("input");
-  inputBox.type = "checkbox";
-  inputBox.id = "pink" + index + 1;
-  if (item.checked) {
-    inputBox.checked = true;
-  }
-  const labelSection = document.createElement("label");
-  labelSection.textContent = item.text;
-  labelSection.htmlFor = inputBox.id;
-
-  listSection.appendChild(inputBox);
-  listSection.appendChild(labelSection);
-  pinkSection.appendChild(listSection);
+    listSection.appendChild(inputBox);
+    listSection.appendChild(labelSection);
+    pinkSection.appendChild(listSection);
+  });
+}
+processPink();
+btnPink.addEventListener("click", (event) => {
+  popup.classList.toggle("hide");
 });
-
-const dataGreen = [
-  {
-    text: " Visit time square",
+inputDataPink.addEventListener("submit", (event) => {
+  event.preventDefault();
+  const inputText = event.target.list.value;
+  dataPink.push({
+    text: " " + inputText,
     checked: false,
+  });
+
+  processPink();
+  // mengirimkan data ke local storage
+  window.localStorage.setItem("data1", JSON.stringify(dataPink));
+  popup.classList.toggle("hide");
+});
+inputDataPink.reset();
+
+//panggil pop up button di section warna hijau dan isikan form serta submit ke local storage
+const greenSection = document.getElementById("green-section");
+let dataGreen = [
+  {
+    checked: false,
+    text: " Visit Time Square",
   },
   {
-    text: " Dinner with Sarah",
     checked: false,
+    text: " Dinner with Sarah",
   },
 ];
+
 dataGreen.forEach((item, index) => {
-  const listSection = document.createElement("div");
+  const listSection2 = document.createElement("div");
   const inputBox = document.createElement("input");
   inputBox.type = "checkbox";
   inputBox.id = "green" + index + 1;
@@ -41,18 +72,35 @@ dataGreen.forEach((item, index) => {
   labelSection.textContent = item.text;
   labelSection.htmlFor = inputBox.id;
 
-  listSection.appendChild(inputBox);
-  listSection.appendChild(labelSection);
-  greenSection.appendChild(listSection);
+  listSection2.appendChild(inputBox);
+  listSection2.appendChild(labelSection);
+  greenSection.appendChild(listSection2);
 });
 
-const dataOrange = [
+const btnGreen = document.getElementById("btn-green");
+const inputDataGreen = document.getElementById("data-green");
+
+// mengirimkan data ke local storage
+
+inputDataGreen.reset();
+
+///////////////////
+const orangeSection = document.getElementById("orange-section");
+let dataOrange = [
   {
     text: " Meet John for project proposal",
     checked: false,
   },
   {
     text: " Client Presentation with Eric",
+    checked: false,
+  },
+  {
+    text: " Call Kids",
+    checked: false,
+  },
+  {
+    text: " Call Manager",
     checked: false,
   },
 ];
@@ -71,39 +119,4 @@ dataOrange.forEach((item, index) => {
   listSection.appendChild(inputBox);
   listSection.appendChild(labelSection);
   orangeSection.appendChild(listSection);
-});
-
-const addPink = document.getElementById("add-pink");
-
-const popup = document.getElementsByClassName("popup").item(0);
-addPink.addEventListener("click", (event) => {
-  popup.classList.toggle("hide");
-});
-
-const inputData = document.getElementById("input-data");
-
-inputData.addEventListener("submit", (event) => {
-  event.preventDefault();
-  const inputDataPink = event.target.list.value;
-  inputDataPink.forEach((item, index) => {
-    let dataPink = [
-      // {
-      //   text: " Clean The Room",
-      //   checked: false,
-      // },
-      // {
-      //   text: " Send Email to John",
-      //   checked: false,
-      // },
-      // {
-      //   text: " Order a new bike",
-      //   checked: false,
-      // },
-      // {
-      //   text: " Create a SEO Account",
-      //   checked: false,
-      // },
-    ];
-  });
-  popup.classList.toggle("hide");
 });

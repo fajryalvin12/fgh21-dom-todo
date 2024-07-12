@@ -10,13 +10,14 @@
     <div class="container">
       <div class="container-center">
         <div class="header">My day</div>
-        <div class="todo-list">
-          <div class="list-wrapper" id="pink-section">
+        <div class="list-wrapper">
+          <div class="todo-list">
             <legend class="pink">TO DO</legend>
             <div>
-              <button class="plus" id="add-pink">
+              <button class="plus" id="btn-pink">
                 <img src="./asset/icons/plus.png" alt="" />
               </button>
+              <div id="pink-section"></div>
             </div>
           </div>
         </div>
@@ -24,9 +25,10 @@
           <div class="list-wrapper" id="green-section">
             <legend class="green">PLACE TO GO</legend>
             <div>
-              <button class="plus">
+              <button class="plus" id="btn-green">
                 <img src="./asset/icons/plus.png" alt="" />
               </button>
+              <div id="green-section"></div>
             </div>
           </div>
         </div>
@@ -37,6 +39,7 @@
               <button class="plus">
                 <img src="./asset/icons/plus.png" alt="" />
               </button>
+              <div id="green-section"></div>
             </div>
           </div>
         </div>
@@ -44,11 +47,22 @@
     </div>
     <div class="popup hide">
       <div class="input-data">
-        <form id="input-data">
-          <label for="text-data" class="header-popup"
+        <form id="data-pink">
+          <label for="text-data-pink" class="header-popup"
             >Text the new to-do-list</label
           >
-          <input type="text" id="text-data" name="list" />
+          <input type="text" id="text-data-pink" name="list" />
+          <button class="submit-data" type="submit">Submit</button>
+        </form>
+      </div>
+    </div>
+    <div class="popup hide">
+      <div class="input-data">
+        <form id="data-green">
+          <label for="text-data-green" class="header-popup"
+            >Text the new to-do-list</label
+          >
+          <input type="text" id="text-data-green" name="list" />
           <button class="submit-data" type="submit">Submit</button>
         </form>
       </div>
